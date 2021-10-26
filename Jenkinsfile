@@ -27,12 +27,8 @@ pipeline {
         sh 'npm install'
       }
     }
-
-    stage('tree') {
-      steps {
-        sh 'tree'
-        sh 'pwd'
-      }
+     stage('clean') {
+      cleanWs()
     }
   /*   stage('Gen .deb') {
       steps {
@@ -59,9 +55,7 @@ pipeline {
         }
       }
     } */
-    stage('clean') {
-      cleanWs()
-    }
+   
     //stage('Test') {
     //steps {
     //sh 'npm test'
