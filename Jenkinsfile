@@ -30,32 +30,34 @@ pipeline {
     /*  stage('clean') {
       cleanWs()
     } */
-  /*   stage('Gen .deb') {
+    /*stage('Gen .deb') {
       steps {
         sh 'docker build -t movie-api:latest .'
 
       }
     } */
-    /* stage('push artifact') {
+    stage('push artifact') {
       steps {
         sh 'chmod +x deb.sh'
         sh './deb.sh'
         dir('/var/lib/jenkins/workspace/') {
           sh 'pwd'
-          sh 'git clone git@github.com:gmjimenez/api-artifacts.git'
+          // sh 'git clone git@github.com:gmjimenez/api-artifacts.git'
           sh 'ls'
-          sh 'cp movie-api.deb api-artifacts/'
         }
-
+        dir('/var/lib/jenkins/workspace/api-artifacts') {
+          sh 'mkdir movie-ui'
+        }
+        sh 'cp movie-ui.deb api-artifacts/movie-ui'
         dir('/var/lib/jenkins/workspace/api-artifacts') {
           sh 'git add .'
-          sh 'git commit -m "api.deb:latest"'
+          sh 'git commit -m "ui.deb:latest"'
           sh 'git remote add origin https://gmjimenez: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@github.com/gmjimenez/api-artifacts.git'
           sh 'git push  '
         }
       }
-    } */
-   
+    }
+
     //stage('Test') {
     //steps {
     //sh 'npm test'
