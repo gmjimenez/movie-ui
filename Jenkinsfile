@@ -54,7 +54,7 @@ pipeline {
         dir('/var/lib/jenkins/workspace/api-artifacts') {
           sh 'git add .'
           sh 'git commit -m "ui.deb:latest"'
-          sh "git remote set-url origin https://gmjimenez:${env:TOKEN}@github.com/gmjimenez/api-artifacts.git"
+          sh "git remote set-url origin https://gmjimenez:${env.TOKEN}@github.com/gmjimenez/api-artifacts.git"
           sh 'git push  '
         }
       }
