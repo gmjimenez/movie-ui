@@ -52,24 +52,29 @@ pipeline {
           sh 'cp movie-ui.deb api-artifacts/movie-ui'
         }
         dir('/var/lib/jenkins/workspace/api-artifacts') {
-          sh 'git add .'
-          sh 'git commit -m "ui.deb:latest"'
-          sh "git remote set-url origin https://gmjimenez:${env.TOKEN}@github.com/gmjimenez/api-artifacts.git"
-          sh 'git push  '
+          withCredentials([[$class : 'UsernamePasswordMultiBinding',
+        credentialsId : '3b848e51-b081-417e-b53e-ee16ff82ca6e',
+        usernameVariable: 'GIT_USER',
+        passwordVariable: 'GIT_PASSWORD']]) {
+            sh 'git add .'
+            sh 'git commit -m "ui.deb:latest"'
+            sh"git push https://${GIT_USER}:${GIT_PASSWORD}@github.com/${GIT_USER}/api-artifacts.git"
+        }
         }
       }
     }
+  }
 
     //stage('Test') {
     //steps {
     //sh 'npm test'
     //}
     //
-    }
+
   post {
         always {
       cleanWs()
       deleteDir()
         }
   }
-  }
+    }
