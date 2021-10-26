@@ -59,6 +59,11 @@ pipeline {
         }
       }
     }
+    post {
+        always {
+            cleanWs()
+        }
+    }
 
     //stage('Test') {
     //steps {
