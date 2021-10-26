@@ -48,7 +48,9 @@ pipeline {
         dir('/var/lib/jenkins/workspace/api-artifacts') {
           sh 'mkdir movie-ui'
         }
-        sh 'cp movie-ui.deb api-artifacts/movie-ui'
+        dir('/var/lib/jenkins/workspace/') {
+          sh 'cp movie-ui.deb api-artifacts/movie-ui'
+        }
         dir('/var/lib/jenkins/workspace/api-artifacts') {
           sh 'git add .'
           sh 'git commit -m "ui.deb:latest"'
