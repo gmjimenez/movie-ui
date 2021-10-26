@@ -42,7 +42,7 @@ pipeline {
         sh './deb.sh'
         dir('/var/lib/jenkins/workspace/') {
           sh 'pwd'
-          // sh 'git clone git@github.com:gmjimenez/api-artifacts.git'
+            sh 'git clone git@github.com:gmjimenez/api-artifacts.git'
           sh 'ls'
         }
         dir('/var/lib/jenkins/workspace/api-artifacts') {
@@ -54,7 +54,7 @@ pipeline {
         dir('/var/lib/jenkins/workspace/api-artifacts') {
           sh 'git add .'
           sh 'git commit -m "ui.deb:latest"'
-          sh 'git remote add origin https://gmjimenez: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@github.com/gmjimenez/api-artifacts.git'
+          sh 'git remote set-url origin https://gmjimenez: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@github.com/gmjimenez/api-artifacts.git'
           sh 'git push  '
         }
       }
@@ -69,6 +69,7 @@ pipeline {
   post {
         always {
       cleanWs()
+      deleteDir()
         }
   }
   }
