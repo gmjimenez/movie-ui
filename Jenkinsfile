@@ -37,9 +37,9 @@ pipeline {
           sh 'git clone https://github.com/gmjimenez/api-artifacts.git'
           sh 'ls'
         }
-        dir('/var/lib/jenkins/workspace/api-artifacts') {
+        /* dir('/var/lib/jenkins/workspace/api-artifacts') {
           sh 'mkdir movie-ui'
-        }
+        } */
         dir('/var/lib/jenkins/workspace/') {
           sh 'cp movie-ui.deb api-artifacts/movie-ui'
         }
