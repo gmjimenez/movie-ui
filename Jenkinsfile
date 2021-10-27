@@ -27,15 +27,7 @@ pipeline {
         sh 'npm install'
       }
     }
-    /*  stage('clean') {
-      cleanWs()
-    } */
-    /*stage('Gen .deb') {
-      steps {
-        sh 'docker build -t movie-api:latest .'
-
-      }
-    } */
+    
     stage('push artifact') {
       steps {
         sh 'chmod +x deb.sh'
@@ -63,6 +55,13 @@ pipeline {
         }
       }
     }
+    stage('Deploy') {
+      steps {
+        sh 'docker build -t movie-ui:latest .'
+        sh 'docker run -d -p 3030 --name movie-ui movie-ui'
+        sh 'docker compose up -v'
+      }
+    } 
   }
 
     //stage('Test') {
