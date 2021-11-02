@@ -68,7 +68,7 @@ pipeline {
     } */
     stage('SSH Artifact') {
       steps {
-        dir('/var/lib/jenkins/workspace/api-artifacts') {
+        dir('/var/lib/jenkins/workspace/api-artifacts/movie-ui/') {
           sh 'ls'
           sshagent(credentials : ['rampup-devops']) {
             sh '''
