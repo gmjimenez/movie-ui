@@ -69,7 +69,7 @@ pipeline {
     stage('SSH Artifact') {
       steps {
         sshagent(credentials : ['rampup-devops']) {
-            sh 'ssh -o StrictHostKeyChecking=no ubuntu@ec2-54-219-84-52.us-west-1.compute.amazonaws.com ls /var/www/'
+            sh 'ssh -o StrictHostKeyChecking=no ubuntu@ec2-54-219-84-52.us-west-1.compute.amazonaws.com ls /tmp/'
         }
       }
     }
