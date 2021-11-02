@@ -55,7 +55,7 @@ pipeline {
         }
       }
     }
-    stage('Build image') {
+/*     stage('Build image') {
       steps {
         sh 'docker build -t movie-ui:latest .'
       }
@@ -65,10 +65,10 @@ pipeline {
         sh 'docker run -d -p 3030:3030 --name movie-ui:latest'
       //sh 'docker compose up -v'
       }
-    }
-    stage('') {
+    } */
+    stage('SSH Artifact') {
       steps {
-        sshagent(credentials : ['rampup-devops    ']) {
+        sshagent(credentials : ['rampup-devops']) {
             sh 'ssh -v ubuntu@ec2-54-219-84-52.us-west-1.compute.amazonaws.com ls /var/www/'
         }
       }
