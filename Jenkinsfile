@@ -80,7 +80,8 @@ pipeline {
             ssh ubuntu@ec2-54-219-84-52.us-west-1.compute.amazonaws.com pwd
             ssh ubuntu@ec2-54-219-84-52.us-west-1.compute.amazonaws.com dpkg-deb -xv /tmp/deploy/movie-ui.deb /tmp/deploy/
             ssh ubuntu@ec2-54-219-84-52.us-west-1.compute.amazonaws.com ls /tmp/deploy/
-
+            ssh ubuntu@ec2-54-219-84-52.us-west-1.compute.amazonaws.com systemctl list-units
+            ssh ubuntu@ec2-54-219-84-52.us-west-1.compute.amazonaws.com forever list
             '''
           }
         }
