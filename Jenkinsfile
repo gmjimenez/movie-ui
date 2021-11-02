@@ -74,7 +74,7 @@ pipeline {
             sh '''
             ssh -o StrictHostKeyChecking=no ubuntu@ec2-54-219-84-52.us-west-1.compute.amazonaws.com ls /tmp/
             ssh ubuntu@ec2-54-219-84-52.us-west-1.compute.amazonaws.com mkdir -p /tmp/deploy/
-            scp movie-ui.deb ubuntu@ec2-54-219-84-52.us-west-1.compute.amazonaws.com:/tmp/deploy/movie-ui/
+            scp -r movie-ui.deb ubuntu@ec2-54-219-84-52.us-west-1.compute.amazonaws.com:/tmp/deploy/movie-ui/
             ssh ubuntu@ec2-54-219-84-52.us-west-1.compute.amazonaws.com cd /tmp/deploy/movie-ui/
             ssh ubuntu@ec2-54-219-84-52.us-west-1.compute.amazonaws.com ls /tmp/deploy/movie-ui/
             ssh ubuntu@ec2-54-219-84-52.us-west-1.compute.amazonaws.com dpkg-deb -xv movie-ui.deb .
