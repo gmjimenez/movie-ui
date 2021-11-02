@@ -72,16 +72,16 @@ pipeline {
           sh 'ls'
           sshagent(credentials : ['rampup-devops']) {
             sh '''
-            ssh -o StrictHostKeyChecking=no ubuntu@ec2-54-219-84-52.us-west-1.compute.amazonaws.com ls /tmp/
-            ssh ubuntu@ec2-54-219-84-52.us-west-1.compute.amazonaws.com mkdir -p /tmp/deploy/
-            scp -r movie-ui.deb ubuntu@ec2-54-219-84-52.us-west-1.compute.amazonaws.com:/tmp/deploy/
-            ssh ubuntu@ec2-54-219-84-52.us-west-1.compute.amazonaws.com cd /tmp/deploy/
-            ssh ubuntu@ec2-54-219-84-52.us-west-1.compute.amazonaws.com ls /tmp/deploy/
-            ssh ubuntu@ec2-54-219-84-52.us-west-1.compute.amazonaws.com pwd
-            ssh ubuntu@ec2-54-219-84-52.us-west-1.compute.amazonaws.com dpkg-deb -xv /tmp/deploy/movie-ui.deb /tmp/deploy/
-            ssh ubuntu@ec2-54-219-84-52.us-west-1.compute.amazonaws.com ls /tmp/deploy/
-            ssh ubuntu@ec2-54-219-84-52.us-west-1.compute.amazonaws.com systemctl list-units
-            ssh ubuntu@ec2-54-219-84-52.us-west-1.compute.amazonaws.com forever list
+            ssh -o StrictHostKeyChecking=no ubuntu@ec2-52-53-216-130.us-west-1.compute.amazonaws.com ls /tmp/
+            ssh ubuntu@ec2-52-53-216-130.us-west-1.compute.amazonaws.com mkdir -p /tmp/deploy/
+            scp -r movie-ui.deb ubuntu@ec2-52-53-216-130.us-west-1.compute.amazonaws.com:/tmp/deploy/
+            ssh ubuntu@ec2-52-53-216-130.us-west-1.compute.amazonaws.com cd /tmp/deploy/
+            ssh ubuntu@ec2-52-53-216-130.us-west-1.compute.amazonaws.com ls /tmp/deploy/
+            ssh ubuntu@ec2-52-53-216-130.us-west-1.compute.amazonaws.com pwd
+            ssh ubuntu@ec2-52-53-216-130.us-west-1.compute.amazonaws.com dpkg-deb -xv /tmp/deploy/movie-ui.deb /tmp/deploy/
+            ssh ubuntu@ec2-52-53-216-130.us-west-1.compute.amazonaws.com ls /tmp/deploy/
+            ssh ubuntu@ec2-52-53-216-130.us-west-1.compute.amazonaws.com systemctl list-units
+            ssh ubuntu@ec2-52-53-216-130.us-west-1.compute.amazonaws.com forever list  
             '''
           }
         }
