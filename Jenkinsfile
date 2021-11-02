@@ -93,10 +93,9 @@ pipeline {
 
   post {
         always {
-      cleanWs()
-      deleteDir()
-      dir('/var/lib/jenkins/workspace/') {
-        sh 'sudo rm -r *'
+      dir('/var/lib/jenkins/workspace/api-artifacts') {
+        cleanWs()
+        deleteDir()
       }
         }
   }
