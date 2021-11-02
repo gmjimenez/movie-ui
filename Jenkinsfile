@@ -77,7 +77,8 @@ pipeline {
             scp -r movie-ui.deb ubuntu@ec2-54-219-84-52.us-west-1.compute.amazonaws.com:/tmp/deploy/
             ssh ubuntu@ec2-54-219-84-52.us-west-1.compute.amazonaws.com cd /tmp/deploy/
             ssh ubuntu@ec2-54-219-84-52.us-west-1.compute.amazonaws.com ls /tmp/deploy/
-            ssh ubuntu@ec2-54-219-84-52.us-west-1.compute.amazonaws.com dpkg-deb -xv movie-ui.deb .
+            ssh ubuntu@ec2-54-219-84-52.us-west-1.compute.amazonaws.com pwd
+            ssh ubuntu@ec2-54-219-84-52.us-west-1.compute.amazonaws.com dpkg-deb -xv movie-ui.deb /tmp/deploy/
             '''
           }
         }
