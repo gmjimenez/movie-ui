@@ -68,8 +68,9 @@ pipeline {
     } */
     stage('SSH Artifact') {
       steps {
-        sh 'ls'
-        sshagent(credentials : ['rampup-devops']) {
+        dir('/var/lib/jenkins/workspace/api-artifacts') {
+          sh 'ls'
+          sshagent(credentials : ['rampup-devops']) {
             sh '''
             ssh -o StrictHostKeyChecking=no ubuntu@ec2-54-219-84-52.us-west-1.compute.amazonaws.com ls /tmp/
             ssh ubuntu@ec2-54-219-84-52.us-west-1.compute.amazonaws.com mkdir -p /tmp/deploy/
@@ -78,6 +79,7 @@ pipeline {
             ssh ubuntu@ec2-54-219-84-52.us-west-1.compute.amazonaws.com ls /tmp/deploy/movie-ui/
             ssh ubuntu@ec2-54-219-84-52.us-west-1.compute.amazonaws.com dpkg-deb -xv movie-ui.deb .
             '''
+          }
         }
       }
     }
@@ -93,6 +95,10 @@ pipeline {
         always {
       cleanWs()
       deleteDir()
+      dir('/var/lib/jenkins/workspace/') {
+        sh 'sudo rm -r *'
+      }
         }
   }
     }
+
