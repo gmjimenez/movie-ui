@@ -1,7 +1,7 @@
 // Declare our dependencies
 var express = require('express');
 var request = require('superagent');
-var backendHost = process.env.BACK_HOST || 'ubuntu@ec2-54-219-84-52.us-west-1.compute.amazonaws.com';
+var backendHost = 'ubuntu@ec2-54-219-84-52.us-west-1.compute.amazonaws.com';
 // Create our express app
 var app = express();
 
